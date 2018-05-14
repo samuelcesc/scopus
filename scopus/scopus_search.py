@@ -72,7 +72,7 @@ class ScopusSearch(object):
             # No cached file exists, or we are refreshing.
             # First, we get a count of how many things to retrieve
             url = 'https://api.elsevier.com/content/search/scopus'
-            params = {'query': query, 'field': fields, 'count': 0, 'start': 0}
+            params = {'query': query, 'field': fields, 'count': 0, 'start': 0, 'date': '2017-2018'}
             xml = download(url=url, params=params).text.encode('utf-8')
             results = ET.fromstring(xml)
 
@@ -90,7 +90,7 @@ class ScopusSearch(object):
             self._EIDS = []
             while N > 0:
                 params = {'query': query, 'fields': fields,
-                          'count': count, 'start': start}
+                          'count': count, 'start': start, 'date': '2017-2018'}
                 resp = download(url=url, params=params, accept="json")
                 results = resp.json()
 
